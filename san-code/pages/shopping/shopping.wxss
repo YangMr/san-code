@@ -1,0 +1,17 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  background-color: #f1f1f1;
+}
+.container .advert{
+  height : 340rpx;
+}
+.container swiper{
+  height:100%;
+}
+.container .main{
+  flex : 1;
+  display: flex;
+  justify-content: center;
+ 
+}

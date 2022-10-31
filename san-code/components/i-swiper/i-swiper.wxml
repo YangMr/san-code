@@ -1,0 +1,5 @@
+<swiper autoplay circular indicator-dots indicator-active-color="#fff">
+  <swiper-item wx:for="{{advertList}}" wx:key="index">
+    <image mode="scaleToFill" src="{{item.imgUrl}}"></image>
+  </swiper-item>
+</swiper>

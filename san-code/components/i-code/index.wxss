@@ -1,0 +1,23 @@
+/* components/i-code/index.wxss */
+.code-btn{
+  width: 290rpx;
+  height: 290rpx;
+  background-color: #FEBE1B;
+  border-radius: 50%;
+  margin-top: 100rpx;
+  border:20rpx solid #FFE49B;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.code-btn image{
+  width: 176rpx;
+  height: 131rpx;
+}
+.code-btn text{
+  color : #fff;
+  display: block;
+  width: 164rpx;
+  text-align: center;
+}
