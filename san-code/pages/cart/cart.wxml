@@ -1,0 +1,31 @@
+<view class="container">
+  <view class="list">
+    <view class="list-item">
+      <view class="title">
+        农夫山泉东方树叶茉莉花茶
+      </view>
+      <view class="specifications">
+        规格: 500ml/瓶
+      </view>
+      <view class="price">
+        <text>¥3.5</text>     
+      </view>
+      <view class="computed">
+        <view class="decrement button">-</view>
+        <input type="text"/>
+        <view class="increment button">+</view>
+      </view>
+    </view>
+  </view> 
+  <view class="footer">
+    <view class="total">
+      总计: <text>¥3.50</text>
+    </view>
+    <view class="group">
+      <view class="add">继续添加</view>
+      <view class="settlement">
+        去结算 <text>(1)</text>
+      </view>
+    </view>
+  </view>
+</view>

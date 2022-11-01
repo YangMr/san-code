@@ -1,5 +1,5 @@
 // pages/shopping/shopping.js
-import IndexModel from "../../model/indexModel"
+import ShoppingModel from "../../model/ShoppingModel"
 Page({
 
   /**
@@ -36,11 +36,10 @@ Page({
 
   // 方法做的事情: 点击扫码按钮触发的方法
   handleScanCode() {
-    console.log("456")
     // 只允许从相机扫码, 开启扫码
     wx.scanCode({
       onlyFromCamera: true,
-      success(res) {
+      success : (res) => {
         const {result} = res
         this.getProductionInfo(result)
       }
@@ -48,30 +47,37 @@ Page({
   },
 
   // 方法做的事情: 根据商品条形码获取商品信息
-  getProductionInfo(code){
-  
-    
+  async getProductionInfo(code){
+    try{
+      let data = {qcode : code}
+      const response = await ShoppingModel.getProductInfo(data)
+      console.log('response=>',response)
+      if(response.length > 0){
+        // 把获取到的商品数据存储到本地
+        
+
+        // 跳转到购物车页面
+        wx.navigateTo({
+          url: '/pages/cart/cart',
+        })
+      }else{
+        wx.showToast({
+          title: '获取不到商品信息',
+          icon : 'none'
+        })
+      }
+    }catch(error){
+      console.log(error)
+    }
   },
 
-  // 方法做的事情: 获取轮播图的数据
-  async getBanner(){
-    const response = await IndexModel.getBanner()
-    console.log("banner", response)
-  },
-
-  // 方法做的事情: 获取导航栏做的事情
-  async getNav(){
-    const response = await IndexModel.getNav()
-    console.log("nav", response)
-  },
+ 
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
     this.getAdvertList()
-    this.getBanner()
-    this.getNav()
   },
 
   /**

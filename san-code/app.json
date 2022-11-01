@@ -2,13 +2,14 @@
     "pages": [
         "pages/shopping/shopping",
         "pages/optimal/optimal",
-        "pages/personal/personal"
+        "pages/personal/personal",
+        "pages/cart/cart"
     ],
     "window": {
         "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "Weixin",
-        "navigationBarTextStyle": "black"
+        "navigationBarBackgroundColor": "#000",
+        "navigationBarTitleText": "扫码购",
+        "navigationBarTextStyle": "white"
     },
     "tabBar": {
       "backgroundColor": "#ffffff",
