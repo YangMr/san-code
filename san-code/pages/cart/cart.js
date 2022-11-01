@@ -1,18 +1,28 @@
 // pages/cart/cart.js
+import {cache} from "../../enum/cache"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    cartList : []
+  },
 
+  // 方法的做的事情: 获取本地存储的购物车数据
+  getCartList(){
+    const carts = wx.getStorageSync(cache.CARTS)
+    console.log('carts=>', carts)
+    this.setData({
+      cartList : carts
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.getCartList()
   },
 
   /**

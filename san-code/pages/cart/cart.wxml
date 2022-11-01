@@ -1,22 +1,23 @@
 <view class="container">
   <view class="list">
-    <view class="list-item">
+    <view class="list-item" wx:for="{{cartList}}" wx:key="index">
       <view class="title">
-        农夫山泉东方树叶茉莉花茶
+        {{item.title}}
       </view>
       <view class="specifications">
         规格: 500ml/瓶
       </view>
       <view class="price">
-        <text>¥3.5</text>     
+        <text>¥{{item.price}}</text>     
       </view>
       <view class="computed">
         <view class="decrement button">-</view>
-        <input type="text"/>
+        <input value="{{item.num}}" type="text"/>
         <view class="increment button">+</view>
       </view>
     </view>
   </view> 
+
   <view class="footer">
     <view class="total">
       总计: <text>¥3.50</text>
@@ -24,7 +25,7 @@
     <view class="group">
       <view class="add">继续添加</view>
       <view class="settlement">
-        去结算 <text>(1)</text>
+        去结算 <text>({{cartList.length}})</text>
       </view>
     </view>
   </view>

@@ -1,5 +1,6 @@
 // pages/shopping/shopping.js
 import ShoppingModel from "../../model/ShoppingModel"
+import {addCart} from "../../common/cart"
 Page({
 
   /**
@@ -54,7 +55,29 @@ Page({
       console.log('response=>',response)
       if(response.length > 0){
         // 把获取到的商品数据存储到本地
-        
+        addCart(response[0])
+
+        /**
+         * 
+         * 点击扫码按钮,获取到商品信息, 将获取到的商品信息存储到本地
+         * 
+         * 判断本地有没有商品数据
+         * 
+         *  本地有商品数据 (非第一次)
+         *      判断要存入的数据在本地是否存在
+         *        存在
+         *            要让本地存储的商品数量 + 1
+         *        不存在
+         *            则需要把要添加的商品存到本地, 但不能覆盖已存在的数据
+         *  
+         * 
+         *  本地没有商品数据 (第一次)
+         *      
+         *  直接存到本地
+         * 
+         * 
+         */
+
 
         // 跳转到购物车页面
         wx.navigateTo({

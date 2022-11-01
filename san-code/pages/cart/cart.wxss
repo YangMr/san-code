@@ -6,6 +6,7 @@
 }
 .container .list{
   flex : 1;
+  padding-bottom: 170rpx;
 }
 .container .list .list-item{
   padding: 20rpx;
@@ -54,6 +55,16 @@
   background-color: #FEBE1B;
   color : #fff;
 }
+.container .computed input{
+  width: 160rpx;
+  box-sizing: border-box;
+  height : 60rpx;
+  border:1rpx solid #FEBE1B;
+  border-radius: 50rpx;
+  margin: 0 10rpx;
+  text-align: center;
+  line-height: 50rpx;
+}
 
 .container .footer{
   display: flex;
@@ -61,6 +72,10 @@
   flex-direction: column;
   background-color: #fff;
   box-shadow: 0 2px 2px 2px #ccc;
+  position: fixed;
+  bottom:0;
+  width: 100%;
+  z-index: 9999;
 }
 .container .footer .total{
   height : 70rpx;
