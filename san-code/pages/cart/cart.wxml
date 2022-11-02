@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container" wx:if="{{cartList.length > 0}}">
   <view class="list">
     <view class="list-item" wx:for="{{cartList}}" wx:key="index">
       <view class="title">
@@ -23,10 +23,18 @@
       总计: <text>¥ {{totalPrice}}</text>
     </view>
     <view class="group">
-      <view class="add">继续添加</view>
-      <view class="settlement">
+      <view class="add" data-attr="add" bindtap="AddScanCode">继续添加</view>
+      <view class="settlement" bindtap="handleToOrder">
         去结算 <text>({{cartList.length}})</text>
       </view>
     </view>
   </view>
+</view>
+
+<view class="empty-cart" wx:else>
+  <view class="tips">购物车是空的哦</view>
+  <view class="icon">
+    <image src="/assets/images/cart.png"></image>
+  </view>
+  <view class="button" bindtap="AddScanCode">扫一扫条形码</view>
 </view>

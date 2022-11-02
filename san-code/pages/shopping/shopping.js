@@ -1,5 +1,5 @@
 // pages/shopping/shopping.js
-import ShoppingModel from "../../model/ShoppingModel"
+import {getScanCode,getProductionInfo} from "../../common/scan-code"
 import {addCart} from "../../common/cart"
 Page({
 
@@ -36,65 +36,19 @@ Page({
   },
 
   // 方法做的事情: 点击扫码按钮触发的方法
-  handleScanCode() {
-    // 只允许从相机扫码, 开启扫码
-    wx.scanCode({
-      onlyFromCamera: true,
-      success : (res) => {
-        const {result} = res
-        this.getProductionInfo(result)
-      }
+  async handleScanCode(){
+    // 开启扫码,并获取到商品的条形码
+    const result = await getScanCode()
+    // 获取到商品的条形码之后调用获取商品信息接口
+    const response = await getProductionInfo(result)
+    // 获取到商品信息之后,将获取到商品信息添加到购物车
+    addCart(response)
+    // 跳转到购物车页面
+    wx.navigateTo({
+      url: '/pages/cart/cart',
     })
   },
 
-  // 方法做的事情: 根据商品条形码获取商品信息
-  async getProductionInfo(code){
-    try{
-      let data = {qcode : code}
-      const response = await ShoppingModel.getProductInfo(data)
-      console.log('response=>',response)
-      if(response.length > 0){
-        // 把获取到的商品数据存储到本地
-        addCart(response[0])
-
-        /**
-         * 
-         * 点击扫码按钮,获取到商品信息, 将获取到的商品信息存储到本地
-         * 
-         * 判断本地有没有商品数据
-         * 
-         *  本地有商品数据 (非第一次)
-         *      判断要存入的数据在本地是否存在
-         *        存在
-         *            要让本地存储的商品数量 + 1
-         *        不存在
-         *            则需要把要添加的商品存到本地, 但不能覆盖已存在的数据
-         *  
-         * 
-         *  本地没有商品数据 (第一次)
-         *      
-         *  直接存到本地
-         * 
-         * 
-         */
-
-
-        // 跳转到购物车页面
-        wx.navigateTo({
-          url: '/pages/cart/cart',
-        })
-      }else{
-        wx.showToast({
-          title: '获取不到商品信息',
-          icon : 'none'
-        })
-      }
-    }catch(error){
-      console.log(error)
-    }
-  },
-
- 
 
   /**
    * 生命周期函数--监听页面加载

@@ -109,3 +109,29 @@
 .container view.settlement text{
   margin-left: 10rpx;
 }
+
+.empty-cart{
+  height : 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.empty-cart .tips{
+  margin-top: 250rpx;
+  color : #777;
+}
+.empty-cart .icon{
+  width: 250rpx;
+  height : 250rpx;
+  margin: 50rpx 0;
+}
+.empty-cart .button{
+  background-color: #FEBE1B;
+  width: 320rpx;
+  height : 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size : 30rpx;
+  border-radius: 15rpx;
+}

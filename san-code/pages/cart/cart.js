@@ -1,6 +1,21 @@
 // pages/cart/cart.js
 import {cache} from "../../enum/cache"
+import {getScanCode, getProductionInfo} from "../../common/scan-code"
+import {addCart} from "../../common/cart"
 Page({
+  // 点击继续添加按钮会触发的方法
+  async AddScanCode(e){
+    // 点击继续添加按钮, 开启扫码,并获取到商品条形码
+    const result = await getScanCode()
+    // 获取到商品条形码之后调用获取商品信息接口
+    const response = await getProductionInfo(result)
+    // 获取到商品信息之后将获取到的商品信息添加到购物车
+    addCart(response)
+    // 从本地获取最新的商品数据,并重新进行渲染
+    this.getCartList()
+    // 当页面的数据重新渲染之后, 我们需要重新计算商品的总价
+    this.getProductTotalPrice()
+  },
 
   /**
    * 页面的初始数据
@@ -12,7 +27,8 @@ Page({
 
   // 方法的做的事情: 获取本地存储的购物车数据
   getCartList(){
-    const carts = wx.getStorageSync(cache.CARTS)
+    const carts = wx.getStorageSync(cache.CARTS) 
+    console.log("ccc",carts)
     this.setData({
       cartList : carts
     })
@@ -63,13 +79,17 @@ Page({
 
   // 方法的做的事情:  获取商品的总价
   getProductTotalPrice(){
-    let totalPrice = 0
-    this.data.cartList.forEach(item=>{
-      totalPrice += item.num * item.price
-    })
-    this.setData({
-      totalPrice 
-    })
+    
+    if(this.data.cartList && this.data.cartList.length > 0){
+      let totalPrice = 0
+      this.data.cartList.forEach(item=>{
+        totalPrice += item.num * item.price
+      })
+      this.setData({
+        totalPrice 
+      })
+    }
+    
   },
 
 
@@ -84,6 +104,13 @@ Page({
     this.getProductTotalPrice()
   },
 
+  // 方法的做的事情: 跳转到订单也
+  handleToOrder(){
+    wx.navigateTo({
+      url: '/pages/order/order',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -96,14 +123,13 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+   
   },
 
   /**

@@ -2,7 +2,6 @@ import {cache} from "../enum/cache"
 
 // 将扫码商品数据添加到本地
 const addCart = (data) => {
-
   const carts = wx.getStorageSync(cache.CARTS) || []
 
   if(carts.length <= 0){
@@ -21,6 +20,7 @@ const addCart = (data) => {
     }
   }
   wx.setStorageSync(cache.CARTS, carts)
+
 }
 
 
