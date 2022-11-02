@@ -11,16 +11,16 @@
         <text>¥{{item.price}}</text>     
       </view>
       <view class="computed">
-        <view class="decrement button">-</view>
+        <view data-index="{{index}}" class="decrement button" bindtap="handleDecrement">-</view>
         <input value="{{item.num}}" type="text"/>
-        <view class="increment button">+</view>
+        <view data-index="{{index}}" class="increment button" bindtap="handleIncrement">+</view>
       </view>
     </view>
   </view> 
 
   <view class="footer">
     <view class="total">
-      总计: <text>¥3.50</text>
+      总计: <text>¥ {{totalPrice}}</text>
     </view>
     <view class="group">
       <view class="add">继续添加</view>
