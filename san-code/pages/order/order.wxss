@@ -1,1 +1,99 @@
 /* pages/order/order.wxss */
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f1f1f1;
+}
+.container .order{
+  flex : 1;
+  padding-bottom: 100rpx;
+  
+}
+.container .order-list{
+  display: flex;
+  flex-direction: column;
+  padding:0 20rpx;
+  background-color: #fff;
+}
+.container .list-item{
+  border-bottom:1rpx solid #eee;
+  padding:40rpx 0;
+}
+.container .list-item .title{
+  display: flex;
+  justify-content: space-between;
+  color : #555;
+}
+.container .list-item .title text:last-child{
+  color : #f60;
+}
+.container .list-item .num{
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+.container .order .order-button{
+  height : 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color : #444;
+}
+
+.container .order-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:0 20rpx;
+  height: 120rpx;
+  background-color: #fff;
+  margin-top: 20rpx;
+  color : #555;
+}
+.container .order-item .balance text{
+  color : #f60;
+}
+.container .order-item .price{
+  color : #f60;
+}
+.container .order .order-tips{
+  display: flex;
+  justify-content: center;
+  margin-top: 150rpx;
+  color : #555;
+}
+.container .order .order-tips text{
+  margin-left: 10rpx;
+}
+.container .footer{
+  display: flex;
+  height : 100rpx;
+  box-shadow: 1px 1px 1px 1px #777;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width:  100%;
+  background-color: #fff;
+  z-index : 9999;
+}
+.container .footer .current-price{
+  flex : 2;
+  display: flex;
+  align-items: center;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+  color : #777;
+}
+.container .current-price text{
+  color : #f60;
+  margin-left: 20rpx;
+}
+.container .footer .confirm-pay{
+  flex : 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FEBE1B;
+  color : #fff;
+}

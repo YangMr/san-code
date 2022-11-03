@@ -1,2 +1,54 @@
-<!--pages/order/order.wxml-->
-<text>pages/order/order.wxml</text>
+<view class="container">
+  <view class="order">
+    <view class="order-list">
+      <view class="list-item" wx:if="{{index < orderSize}}" wx:for="{{orderList}}" wx:key="index">
+        <view class="title">
+          <text>{{item.title}}</text>
+          <text>¥{{item.price}}</text>
+        </view>
+        <view class="num">X{{item.num}}</view>
+      </view>
+      <view class="order-button" bindtap="handleOrderSwitch">
+        共{{orderList.length}}件商品 {{orderSize === 1 ? '展开' : '收起'}}
+      </view>
+    </view>
+
+    <view class="order-item">
+      <view class="balance">
+        余额 <text>(¥{{balance}})</text>
+      </view>
+      <switch bindchange="handleChange" checked="{{switchStatus}}" color="#FEBE1B"></switch>
+    </view>
+
+    <view class="order-item">
+      <view class="money">
+        商品金额
+      </view>
+      <view class="price">
+        ¥{{totalPrice}}
+      </view>
+    </view>
+
+    <view class="order-item">
+      <view class="reduce">
+        余额减扣
+      </view>
+      <view class="price">
+        -¥{{ switchStatus ? balance : 0}}
+      </view>
+    </view>
+
+    <view class="order-tips">
+      <icon type="warn" color="#ccc"></icon>
+      <text>请支付完成后携带商品</text> 
+    </view>  
+  </view>
+  <view class="footer">
+    <view class="current-price">
+      实际支付: <text>¥{{realPrice}}</text>
+    </view>
+    <view class="confirm-pay">
+      确认支付
+    </view>
+  </view>
+</view>

@@ -1,18 +1,67 @@
 // pages/order/order.js
+import {cache} from "../../enum/cache"
+import getProductTotalPrice from "../../common/computed-total-price"
 Page({
+  // 获取本地的商品数据
+  getCartList(){
+    const orderList = wx.getStorageSync(cache.CARTS) || []
+    console.log(orderList)
+    this.setData({
+      orderList
+    })
+  },
+
+  // 点击展开或者收起按钮触发的方法
+  handleOrderSwitch(){
+    let length = this.data.orderList.length
+    length = this.data.orderSize === 1 ? length : 1
+    this.setData({
+      orderSize : length
+    })
+  },
+
+  // 点击switch开发会触发的方法
+  handleChange(e){
+    const value = e.detail.value
+    this.setData({
+      switchStatus : value
+    })
+    this.handleComputedPrice()
+  },
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    orderList : [],
+    orderSize : 1,
+    balance : 4,
+    switchStatus : true,
+    totalPrice : 0, // 商品金额
+    realPrice : 0, // 实际价格
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.getCartList()
+    this.handleComputedPrice()
+  },
 
+  // 计算价格
+  handleComputedPrice(){
+    const totalPrice = getProductTotalPrice(this.data.orderList)
+    if(this.data.switchStatus){
+      console.log("123")
+      this.data.realPrice = totalPrice - this.data.balance
+    }else{
+      this.data.realPrice = totalPrice
+    }
+    this.setData({
+      totalPrice,
+      realPrice : this.data.realPrice
+    })   
   },
 
   /**
