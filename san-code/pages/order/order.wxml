@@ -34,7 +34,7 @@
         余额减扣
       </view>
       <view class="price">
-        -¥{{ switchStatus ? balance : 0}}
+        -¥{{ switchStatus ? deducted : 0}}
       </view>
     </view>
 
@@ -47,7 +47,7 @@
     <view class="current-price">
       实际支付: <text>¥{{realPrice}}</text>
     </view>
-    <view class="confirm-pay">
+    <view class="confirm-pay" bindtap="handleToSuccess">
       确认支付
     </view>
   </view>

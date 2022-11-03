@@ -1,13 +1,15 @@
 // pages/shopping/shopping.js
 import {getScanCode,getProductionInfo} from "../../common/scan-code"
 import {addCart} from "../../common/cart"
+import {cache} from "../../enum/cache"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    advertList: []
+    advertList: [],
+    status : false
   },
 
   // 方法做的事情: 获取轮播图数据
@@ -49,12 +51,20 @@ Page({
     })
   },
 
+  findData(){
+    const carts = wx.getStorageSync(cache.CARTS) || []
+    let status = carts.length > 0 ? true : false
+    this.setData({
+      status
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
     this.getAdvertList()
+    
   },
 
   /**
@@ -68,7 +78,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.findData()
   },
 
   /**

@@ -21,3 +21,7 @@
   width: 164rpx;
   text-align: center;
 }
+.code-btn .cart-pic{
+  width: 100rpx;
+  height : 120rpx;
+}

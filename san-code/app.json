@@ -4,7 +4,8 @@
         "pages/optimal/optimal",
         "pages/personal/personal",
         "pages/cart/cart",
-        "pages/order/order"
+        "pages/order/order",
+        "pages/success/success"
     ],
     "window": {
         "backgroundTextStyle": "light",

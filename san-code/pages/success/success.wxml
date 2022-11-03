@@ -1,0 +1,31 @@
+<view class="container"> 
+  <view class="pay-success">
+    <view class="tips">
+      <image src="/assets/images/face.png"></image>
+      <text>支付成功</text>
+    </view>
+    <view class="back" bindtap="handleToHome">返回首页</view>
+  </view>
+  <view class="list">
+    <view class="list-title">
+      <text>*</text>
+      你可能喜欢
+      <text>*</text>
+    </view>
+    <view class="list-item" wx:for="[1,2,3,4,5,6,7]">
+      <view class="cover">
+        <image src="/assets/images/00.png"></image>
+      </view>
+      <view class="title">
+        海南现摘芒果
+      </view>
+      <view class="price">
+        ¥29.9
+      </view>
+      <view class="other">
+        <view class="sales">销量: 201件</view>
+        <view class="now">立即购买</view>
+      </view>
+    </view>
+  </view>
+</view>

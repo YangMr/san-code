@@ -3,6 +3,6 @@
     <i-swiper advertList="{{advertList}}"></i-swiper>
   </view>
   <view class="main">
-    <i-code bindscanCode="handleScanCode"></i-code>
+    <i-code status="{{status}}" bindscanCode="handleScanCode"></i-code>
   </view>
 </view>

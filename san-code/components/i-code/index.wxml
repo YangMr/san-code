@@ -1,4 +1,9 @@
-<view class="code-btn" bindtap="handleScanCode">
-  <image src="/assets/images/qrcode.png"></image>
-  <text>请扫描商品条形码</text>
+<view wx:if="{{!status}}" class="code-btn" bindtap="handleScanCode">
+    <image src="/assets/images/qrcode.png"></image>
+    <text>请扫描商品条形码</text>
+</view>
+
+<view class="code-btn" wx:else bindtap="handleToCart">
+  <image class="cart-pic" src="/assets/images/cart_index.png"></image>
+  <text>去结算</text>
 </view>

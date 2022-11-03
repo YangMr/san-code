@@ -2,6 +2,13 @@
 import {cache} from "../../enum/cache"
 import getProductTotalPrice from "../../common/computed-total-price"
 Page({
+  // 跳转到支付成功页面
+  handleToSuccess(){
+    wx.navigateTo({
+      url: '/pages/success/success',
+    })
+  },
+
   // 获取本地的商品数据
   getCartList(){
     const orderList = wx.getStorageSync(cache.CARTS) || []
@@ -35,7 +42,8 @@ Page({
   data: {
     orderList : [],
     orderSize : 1,
-    balance : 4,
+    balance : 4, // 余额
+    deducted : 0, // 减扣
     switchStatus : true,
     totalPrice : 0, // 商品金额
     realPrice : 0, // 实际价格
@@ -53,15 +61,33 @@ Page({
   handleComputedPrice(){
     const totalPrice = getProductTotalPrice(this.data.orderList)
     if(this.data.switchStatus){
-      console.log("123")
-      this.data.realPrice = totalPrice - this.data.balance
+      if(this.data.balance > totalPrice){
+        this.data.balance -= totalPrice
+        this.setData({
+          balance : this.data.balance,
+          totalPrice,
+          deducted :  totalPrice,
+          realPrice : 0
+        })
+      }else{
+        this.data.realPrice = totalPrice - this.data.balance
+        this.setData({
+          totalPrice,
+          realPrice : this.data.realPrice,
+          deducted : this.data.balance,
+          balance : 0
+        })  
+      }
+      
     }else{
       this.data.realPrice = totalPrice
+      this.setData({
+        balance : 4,
+        totalPrice,
+        realPrice : this.data.realPrice
+      })  
     }
-    this.setData({
-      totalPrice,
-      realPrice : this.data.realPrice
-    })   
+     
   },
 
   /**

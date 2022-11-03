@@ -21,6 +21,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "success",
+          "pathName": "pages/success/success",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
