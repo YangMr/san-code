@@ -1,5 +1,6 @@
 const cache = {
-  CARTS : 'carts'
+  CARTS : 'carts',
+  USER_INFO_KEY : 'userinfo'
 }
 
 export {cache} 

@@ -42,7 +42,7 @@ class Http{
 
       // 请求成功,将请求的结果返回出去
       if(res.statusCode === 200){
-        return res.data.result
+        return res.data
       }
 
       // 请求失败 --- 能够进行错误信息提示

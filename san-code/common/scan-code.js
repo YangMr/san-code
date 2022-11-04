@@ -21,8 +21,9 @@ const getScanCode = async () =>{
 const getProductionInfo = async (code) => {
   try{
     let data = {qcode : code}
-    const response = await ShoppingModel.getProductInfo(data)
-
+    const res = await ShoppingModel.getProductInfo(data)
+    
+    const response = res.result
     if(response.length > 0){
       return response[0]
     }else{
