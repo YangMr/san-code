@@ -1,1 +1,52 @@
 /* pages/personal/personal.wxss */
+.container{
+  background-color: #eee;
+}
+.user-info{
+  display: flex;
+  padding:60rpx 20rpx;
+  background: linear-gradient(to bottom, hsl(98, 88%, 43%) 0%,#ffffff 100%);
+  align-items: center;
+}
+.user-info .avatar{
+  width: 120rpx;
+  height : 120rpx;
+  border-radius: 50%;
+}
+.user-info .info{
+  margin-left: 20rpx;
+}
+
+.user-info .info view text{
+  color : #f60;
+}
+.user-item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:0 20rpx;
+  background-color: #fff;
+  margin-top: 20rpx;
+  height : 120rpx;
+  position: relative;
+}
+.user-item .item{
+  display: flex;
+  align-items: center;
+}
+.user-item .item image{
+  width: 60rpx;
+  height:50rpx;
+}
+.user-item .item text{
+  margin-left: 20rpx;
+}
+.user-item .tips{
+  background-color: #f60;
+  color : #fff;
+  padding:8rpx 12rpx;
+  border-radius: 10rpx;
+  position: absolute;
+  left : 236rpx;
+  top : 5rpx;
+}
